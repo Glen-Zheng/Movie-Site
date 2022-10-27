@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <title>Movie Site</title>
+  </head>
+  <body>
+    <h1>Movie Information</h1>
+    <p>See the drop down below to select a movie</p>
+    <label for="moviesdropdown" >Choose a movie:</label>
+    <select id="moviesdropdown">
+
+    <!--use oppenheimer website as resference. want this cool background and flow type thing-->>
+      <option value="halloween">halloween</option>
+      <option value="oppenheimer">oppenheimer</option>
+      <option value="c">movie c</option>
+      <option value="d">movie d</option>
+      <option value="e">movie e</option>
+      <option value="f">movie f</option>
+      <option value="g">movie g</option>
+      <option value="night">night</option>
+      <option value="i">movie i</option>
+      <option value="j">movie j</option>
+    </select>
+</br></br>
+    <button id="get">Get</button>
+    <script src=".\script.js" defer></script>
+  </body>
 </html>
