@@ -45,7 +45,7 @@ async function movieOutput(i) {
   movieRuntime = video.data.runtime;
   movieHomepage = video.data.homepage;
   movieTagline = video.data.tagline;
-  
+
   title = document.createElement("h1");
   poster = document.createElement("img");
   overview = document.createElement("p");
@@ -86,14 +86,14 @@ async function movieOutput(i) {
   div.append(popularity);
   if (video.data.belongs_to_collection) {
     movieCollection = video.data.belongs_to_collection.name;
-     movieCollectionPoster = video.data.belongs_to_collection.poster_path;
+    movieCollectionPoster = video.data.belongs_to_collection.poster_path;
 
-     collection = document.createElement("p");
-     collectionPoster = document.createElement("img");
-       collection.innerHTML = `${movieCollection}`;
-  collectionPoster.src = `https://image.tmdb.org/t/p/w500${movieCollectionPoster}`;
-  div.append(collection);
-  div.append(collectionPoster);
+    collection = document.createElement("p");
+    collectionPoster = document.createElement("img");
+    collection.innerHTML = `${movieCollection}`;
+    collectionPoster.src = `https://image.tmdb.org/t/p/w500${movieCollectionPoster}`;
+    div.append(collection);
+    div.append(collectionPoster);
   }
   div.append(trailer);
 
