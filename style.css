@@ -1,6 +1,13 @@
 body {
   background-color: #dcecfa;
+  margin: 0px 0px 0px 0px;
 }
+
+/* #topdiv {
+  background-color: #C9A9A6;
+  width:100%;
+  aspect-ratio: 10/1;
+} */
 
 #pagetitle {
   font-family: "Rye", cursive;
@@ -28,6 +35,12 @@ body {
   font-size: 40px;
   font-family: "Berkshire Swash", cursive;
 }
+
+#moviesdropdown:hover {
+  transform: scale(1.047);
+  transition-duration: 1s;
+}
+
 .alignbutton {
   text-align: center;
 }
