@@ -29,6 +29,7 @@ let collection;
 let collectionPoster;
 let trailer;
 
+
 async function movieOutput(i) {
   video = await axios.get(`https://api.themoviedb.org/3/movie/${i.id}`, {
     params: {
@@ -49,6 +50,11 @@ async function movieOutput(i) {
 
   title = document.createElement("h1");
 title.setAttribute("id", "movie-title");
+
+// if (i.id === 458156) {
+//   title.setAttribute("id", "movie-title");
+
+// }
   poster = document.createElement("img");
 poster.setAttribute("id", "movie-poster");
   overview = document.createElement("p");
@@ -115,6 +121,9 @@ trailer.setAttribute("id", "movie-trailer");
   div.append(trailer);
 
   removeFind = document.getElementById("remover");
+
+  count++;
+  
 }
 
 const get = document.getElementById("get");
@@ -183,4 +192,12 @@ get.addEventListener("click", async () => {
       //   console.log("no movie");
     }
   }
+
+});
+
+
+
+get.addEventListener('click', () => {
+  pagetitle.setAttribute("class", "animate");
+
 });

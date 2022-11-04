@@ -1,3 +1,7 @@
+* {
+  font-family: "Berkshire Swash", cursive;
+}
+
 body {
   background-color: #dcecfa;
   margin: 0px 0px 0px 0px;
@@ -17,6 +21,7 @@ body {
 }
 
 #intro {
+  margin-left: 5px;
   font-family: "Berkshire Swash", cursive;
   font-size: 45px;
   color: #64300a;
@@ -25,6 +30,7 @@ body {
 #moviesdropdownlabel {
   font-family: "Berkshire Swash", cursive;
   font-size: 70px;
+  margin-left: 5px;
 }
 
 #moviesdropdown {
@@ -63,33 +69,38 @@ body {
 #remover {
   height: 2000px;
   display: grid;
-  background-color: azure;
+  /* background-color: azure; */
   margin: 20px 20px 20px 20px;
   grid-template-rows: 100px 30px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
 }
 
 #movie-title {
   grid-column: 2/5;
   text-align: center;
   text-shadow: 3px 3px #23395d;
-  font-size: 5rem;
+  font-size: 3.5rem;
   align-self: center;
+  font-family: "Bungee Inline", cursive;
+  /* font-family: 'Fredericka the Great', cursive; */
+  /* font-family: 'Metamorphous', cursive; */
 }
 #movie-poster {
   grid-row: 2/5;
   aspect-ratio: 1/3;
-  justify-self: center;
+  border: 4px solid rgb(135, 14, 14);
   /* put a margin on the poster */
 }
 
-#movieposter:hover {
+#movie-poster:hover {
+  transform: skew(-5deg, -5deg);
+  transition-duration: 2s;
 }
 
 #movie-tagline {
   grid-row: 2/3;
-  grid-column: 3/4;
-  justify-self: center;
+  grid-column: 2/5;
   align-self: center;
 }
 
@@ -104,44 +115,91 @@ body {
 #movie-release-date {
   grid-column: 2/3;
   grid-row: 4/5;
+  align-self: center;
+  font-size: 1.5rem;
+  color: #22427a;
 }
 #movie-genre {
   grid-column: 3/4;
   grid-row: 4/5;
+  align-self: center;
+  font-size: 1.5rem;
+  color: #22427a;
 }
 #movie-runtime {
   grid-column: 4/5;
   grid-row: 4/5;
+  align-self: center;
+  font-size: 1.5rem;
+  color: #22427a;
 }
 #movie-revenue {
   grid-column: 2/3;
   grid-row: 5/6;
+  align-self: center;
+  font-size: 1.5rem;
+  color: #22427a;
 }
 #movie-budget {
   grid-column: 3/4;
   grid-row: 5/6;
+  align-self: center;
+  font-size: 1.5rem;
+  color: #22427a;
 }
 #movie-homepage {
-  grid-column: 4/5;
+  grid-column: 3/4;
   grid-row: 6/7;
+  font-size: 2rem;
+  align-self: end;
 }
 #movie-ranking {
   grid-column: 4/5;
   grid-row: 5/6;
+  align-self: center;
+  font-size: 1.5rem;
+  color: #22427a;
 }
 #movie-trailer {
-  grid-column: 1/2;
-  grid-row: 7/8;
+  grid-column: 1/5;
+  grid-row: 8/9;
+  aspect-ratio: 3/1.87;
+  width: 50%;
+  margin: 5%;
 }
 
 #movie-collection {
-  grid-column: 3/4;
-  grid-row: 7/8;
+  grid-column: 2/3;
+  grid-row: 9/10;
+  justify-self: end;
+align-self: center; 
+ font-size: 1.8rem;
+ margin-right: 5px;
 }
 
 #movie-collection-poster {
-  grid-column: 2/3;
-  grid-row: 7/8;
+  grid-column: 3/4;
+  grid-row: 9/10;
+  justify-self: start;
   aspect-ratio: 2/3;
-  width: 100px;
+  width:30%;
+}
+
+@keyframes ani {
+  0%   {color:red; }
+  15%  {color:rgb(222, 128, 22); }
+  /* 30%  {color:blue; }
+  45%  {color:green;}
+  50% {color:black}
+  60%{color:red; }
+  75%  {color:violet; }
+  90% {color: aqua;}
+  100% {color:bisque;} */
+
+}
+
+.animate {
+ animation-name: ani;
+ animation-duration: 2s;
+ animation-iteration-count: infinite;
 }
