@@ -29,12 +29,12 @@ let collection;
 let collectionPoster;
 let trailer;
 
-
 async function movieOutput(i) {
-  video = await axios.get(`https://api.themoviedb.org/3/movie/${i.id}`, {
+  video = await axios.get(`https://api.themoviedb.org/3/movie/${i}`, {
     params: {
       api_key: "da6aeec5bd0d488feeebd8b57deda080",
       append_to_response: "videos",
+      include_adult: false,
     },
   });
   trailers = video.data.videos.results.filter(
@@ -51,10 +51,6 @@ async function movieOutput(i) {
   title = document.createElement("h1");
 title.setAttribute("id", "movie-title");
 
-// if (i.id === 458156) {
-//   title.setAttribute("id", "movie-title");
-
-// }
   poster = document.createElement("img");
 poster.setAttribute("id", "movie-poster");
   overview = document.createElement("p");
@@ -79,10 +75,10 @@ ranking.setAttribute("id", "movie-ranking");
   trailer = document.createElement("iframe");
 trailer.setAttribute("id", "movie-trailer");
 
-  title.innerHTML = `${i.title} `;
-  poster.src = `https://image.tmdb.org/t/p/w500${i.poster_path}`;
-  overview.innerHTML = `Overview: ${i.overview}`;
-  releaseDate.innerHTML = `Release Date: ${i.release_date}`;
+  title.innerHTML = `${video.data.title} `;
+  poster.src = `https://image.tmdb.org/t/p/w500${video.data.poster_path}`;
+  overview.innerHTML = `Overview: ${video.data.overview}`;
+  releaseDate.innerHTML = `Release Date: ${video.data.release_date}`;
   genre.innerHTML = `Genre: ${movieGenre}`;
   revenue.innerHTML = `Revenue: $${movieRevenue}`;
   budget.innerHTML = `Budget: $${movieBudget}`;
@@ -90,7 +86,7 @@ trailer.setAttribute("id", "movie-trailer");
   tagline.innerHTML = `${movieTagline}`;
   homepage.href = `${movieHomepage}`;
   homepage.innerHTML = "Movie Homepage";
-  ranking.innerHTML = `Ranking: ${i.vote_average}/10`;
+  ranking.innerHTML = `Ranking: ${video.data.vote_average}/10`;
 
   trailer.src = `https://www.youtube.com/embed/${trailers[0].key}`;
 
@@ -121,83 +117,36 @@ trailer.setAttribute("id", "movie-trailer");
   div.append(trailer);
 
   removeFind = document.getElementById("remover");
-
-  count++;
-  
 }
 
 const get = document.getElementById("get");
 
-get.addEventListener("click", async () => {
-  let chosenMovie = movie.value;
 
-  if (removeFind) {
-    div.remove();
-  }
+  get.addEventListener("click", async () => {
+    let chosenMovie = movie.value;
 
-  div = document.createElement("div");
-  div.setAttribute("id", "remover");
-  document.body.append(div);
-
-  movieResponse = await axios.get("https://api.themoviedb.org/3/search/movie", {
-    params: {
-      api_key: "da6aeec5bd0d488feeebd8b57deda080",
-      include_adult: "false",
-      query: chosenMovie,
-    },
-  });
-
-  for (let i of movieResponse.data.results) {
-    switch (i.id) {
-      case 424139:
-        movieOutput(i);
-        break;
-      case 354912:
-        movieOutput(i);
-
-        break;
-      case 458156:
-        movieOutput(i);
-
-        break;
-      case 146233:
-        movieOutput(i);
-
-        break;
-      case 399566:
-        movieOutput(i);
-
-        break;
-      case 72190:
-        movieOutput(i);
-
-        break;
-      case 1422:
-        movieOutput(i);
-
-        break;
-      case 12405:
-        movieOutput(i);
-
-        break;
-      case 27205:
-        movieOutput(i);
-
-        break;
-      case 396371:
-        movieOutput(i);
-
-        break;
-      // default:
-      //   console.log("no movie");
+    if (removeFind) {
+      div.remove();
     }
-  }
 
-});
+    div = document.createElement("div");
+    div.setAttribute("id", "remover");
+    document.body.append(div);
 
+  movieOutput(chosenMovie);
+  });
 
 
 get.addEventListener('click', () => {
   pagetitle.setAttribute("class", "animate");
+});
 
+let rotation =0;
+const angle = 90;
+
+hiddenbutton= document.getElementById("hiddenone");
+
+hiddenbutton.addEventListener("click", ()=> {
+  rotation = (rotation + angle) % 360;
+  div.style.transform = `rotate(${rotation}deg)`;
 });
