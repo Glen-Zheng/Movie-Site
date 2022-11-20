@@ -43,7 +43,6 @@ async function movieOutput(i) {
 
   title = document.createElement("h1");
 title.setAttribute("id", "movie-title");
-
   poster = document.createElement("img");
 poster.setAttribute("id", "movie-poster");
   overview = document.createElement("p");
@@ -83,7 +82,6 @@ title.innerHTML = `${video.data.title} `;
 
   trailer.src = `https://www.youtube.com/embed/${trailers[0].key}`;
   
-
   div.append(title);
   div.append(poster);
   div.append(overview);
@@ -112,7 +110,6 @@ title.innerHTML = `${video.data.title} `;
 
 const get = document.getElementById("get");
 
-
   get.addEventListener("click", async () => {
     let chosenMovie = movie.value;
 
@@ -127,10 +124,7 @@ const get = document.getElementById("get");
   movieOutput(chosenMovie);  //should eb 4 lines up
 
   pagetitle.setAttribute("class", "animate");
-
   });
-
-
 
 let rotation =0;
 const angle = 90;
