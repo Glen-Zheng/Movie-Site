@@ -2,8 +2,6 @@ let movie = document.getElementById("moviesdropdown");
 let chosenMovie = movie.value;
 let video;
 let div;
-let movieSifted;
-let movieResponse;
 let removeFind;
 let trailers;
 let movieGenre;
@@ -79,7 +77,6 @@ title.innerHTML = `${video.data.title} `;
   homepage.href = `${video.data.homepage}`;
   homepage.innerHTML = "Movie Homepage";
   ranking.innerHTML = `Ranking: ${video.data.vote_average}/10`;
-
   trailer.src = `https://www.youtube.com/embed/${trailers[0].key}`;
   
   div.append(title);
@@ -93,6 +90,7 @@ title.innerHTML = `${video.data.title} `;
   div.append(tagline);
   div.append(homepage);
   div.append(ranking);
+
   if (video.data.belongs_to_collection) {
     collection = document.createElement("p");
   collection.setAttribute("id", "movie-collection");
