@@ -41,13 +41,6 @@ async function movieOutput(i) {
     (trailer) => trailer.type === "Trailer"
   );
 
-  movieGenre = video.data.genres[0].name;
-  movieBudget = video.data.budget;
-  movieRevenue = video.data.revenue;
-  movieRuntime = video.data.runtime;
-  movieHomepage = video.data.homepage;
-  movieTagline = video.data.tagline;
-
   title = document.createElement("h1");
 title.setAttribute("id", "movie-title");
 
@@ -75,20 +68,21 @@ ranking.setAttribute("id", "movie-ranking");
   trailer = document.createElement("iframe");
 trailer.setAttribute("id", "movie-trailer");
 
-  title.innerHTML = `${video.data.title} `;
+title.innerHTML = `${video.data.title} `;
   poster.src = `https://image.tmdb.org/t/p/w500${video.data.poster_path}`;
   overview.innerHTML = `Overview: ${video.data.overview}`;
   releaseDate.innerHTML = `Release Date: ${video.data.release_date}`;
-  genre.innerHTML = `Genre: ${movieGenre}`;
-  revenue.innerHTML = `Revenue: $${movieRevenue}`;
-  budget.innerHTML = `Budget: $${movieBudget}`;
-  runtime.innerHTML = `Movie Runtime: ${movieRuntime} minutes`;
-  tagline.innerHTML = `${movieTagline}`;
-  homepage.href = `${movieHomepage}`;
+  genre.innerHTML = `Genre: ${video.data.genres[0].name}`;
+  revenue.innerHTML = `Revenue: $${video.data.revenue}`;
+  budget.innerHTML = `Budget: $${video.data.budget}`;
+  runtime.innerHTML = `Movie Runtime: ${video.data.runtime} minutes`;
+  tagline.innerHTML = `${video.data.tagline}`;
+  homepage.href = `${video.data.homepage}`;
   homepage.innerHTML = "Movie Homepage";
   ranking.innerHTML = `Ranking: ${video.data.vote_average}/10`;
 
   trailer.src = `https://www.youtube.com/embed/${trailers[0].key}`;
+  
 
   div.append(title);
   div.append(poster);
@@ -102,15 +96,12 @@ trailer.setAttribute("id", "movie-trailer");
   div.append(homepage);
   div.append(ranking);
   if (video.data.belongs_to_collection) {
-    movieCollection = video.data.belongs_to_collection.name;
-    movieCollectionPoster = video.data.belongs_to_collection.poster_path;
-
     collection = document.createElement("p");
   collection.setAttribute("id", "movie-collection");
     collectionPoster = document.createElement("img");
   collectionPoster.setAttribute("id", "movie-collection-poster");
-    collection.innerHTML = `${movieCollection}`;
-    collectionPoster.src = `https://image.tmdb.org/t/p/w500${movieCollectionPoster}`;
+    collection.innerHTML = `${video.data.belongs_to_collection.name}`;
+    collectionPoster.src = `https://image.tmdb.org/t/p/w500${video.data.belongs_to_collection.poster_path}`;
     div.append(collection);
     div.append(collectionPoster);
   }
@@ -133,13 +124,13 @@ const get = document.getElementById("get");
     div.setAttribute("id", "remover");
     document.body.append(div);
 
-  movieOutput(chosenMovie);
+  movieOutput(chosenMovie);  //should eb 4 lines up
+
+  pagetitle.setAttribute("class", "animate");
+
   });
 
 
-get.addEventListener('click', () => {
-  pagetitle.setAttribute("class", "animate");
-});
 
 let rotation =0;
 const angle = 90;
